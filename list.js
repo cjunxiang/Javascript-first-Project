@@ -7,15 +7,15 @@ let incompleteTasks = document.getElementbyId("incomplete-tasks");
 let completedTasks = document.getElementbyId("completed-tasks")
 
 //new list constructor (creates a new list)
+/* new task under todo should have: 
+[checkbox]||name||edit||delete */
 let createNewTask = function(taskString) {
-	/* new task under todo should have: 
-	[checkbox]||name||edit||delete */
 	let newListItem = document.createElement("li");
 
 	let checkBox = document.createElement("input");
 		checkBox.type = "checkbox";
-	let nameHolder = document.createElement("nameHolder");
-		nameHolder.innerText = taskString;
+	let label = document.createElement("label");
+		label.innerText = taskString;
 	let editInput = document.createElement("input"); 
 		editInput.type = "text";
     let editButton = document.createElement("button"); 
@@ -25,8 +25,11 @@ let createNewTask = function(taskString) {
     	deleteButton.innerText = "Delete";
     	deleteButton.className =  "delete";
 
-    newlistItem.appendChild(checkBox).appendChild(nameHolder)
-    .appendChild(editInput).appendChild(editButton).append(deleteButton);
+    listItem.appendChild(checkBox); 
+    listItem.appendChild(label); 
+    listItem.appendChild(editInput); 
+    listItem.appendChild(editButton); 
+    listItem.appendChild(deleteButton); 
 
     return newlistItem;
 }
@@ -51,13 +54,13 @@ let editTask = function() {
 	let currentItem = this.parentNode;
 
 	let editInput = currentItem.querySelector("input[type=text]");
-	let nameHolder = currentItem.querySelector("nameholder");
+	let label = currentItem.querySelector("label");
 	let edittingClass = currentItem.classList.contains("editMode");
 
 	if (edittingClass) {
-		nameholder.innerText = editInput.value;
+		label.innerText = editInput.value;
 	} else {
-		editInput.value = nameHolder.innerText;
+		editInput.value = label.innerText;
 	}
 	currentItem.classlsit.toggle("editMode");
 }
