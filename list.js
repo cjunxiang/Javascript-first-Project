@@ -1,10 +1,10 @@
-let newTask = document.getElementbyId("new-task");
-let buttonPressed = document.getElementsByTagName("button")[0];
+let newTask = document.getElementById("new-task");  
+let buttonPressed = document.getElementsByTagName("button")[0];  
 
 //UL unordered list
 //li list item
-let incompleteTasks = document.getElementbyId("incomplete-tasks");
-let completedTasks = document.getElementbyId("completed-tasks")
+let incompleteTasks = document.getElementById("incomplete-tasks");
+let completedTasks = document.getElementById("completed-tasks")
 
 //new list constructor (creates a new list)
 /* new task under todo should have: 
@@ -25,18 +25,18 @@ let createNewTask = function(taskString) {
     	deleteButton.innerText = "Delete";
     	deleteButton.className =  "delete";
 
-    listItem.appendChild(checkBox); 
-    listItem.appendChild(label); 
-    listItem.appendChild(editInput); 
-    listItem.appendChild(editButton); 
-    listItem.appendChild(deleteButton); 
+    newListItem.appendChild(checkBox); 
+    newListItem.appendChild(label); 
+    newListItem.appendChild(editInput); 
+    newListItem.appendChild(editButton); 
+    newListItem.appendChild(deleteButton); 
 
-    return newlistItem;
+    return newListItem;
 }
 
 let addTask = function() {
 	console.log("adding Task...");
-	let currentItem = createNewTaskElement(newTask.value);
+	let currentItem = createNewTask(newTask.value);
 
 	if (newTask.value == "") {
 		return;
