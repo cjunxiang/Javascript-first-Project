@@ -14,12 +14,12 @@ let createNewTask = function(taskString) {
 
 	let checkBox = document.createElement("input");
 		checkBox.type = "checkbox";
-	let nameHolder = document.createElement("nameholder");
+	let nameHolder = document.createElement("nameHolder");
 		nameHolder.innerText = taskString;
 	let editInput = document.createElement("input"); 
 		editInput.type = "text";
     let editButton = document.createElement("button"); 
-    	editButton.innerText = "Edit";
+    	editButton.innerText = "Edit"; //aesthetics
     	editButton.className = "edit";
     let deleteButton = document.createElement("button");
     	deleteButton.innerText = "Delete";
@@ -33,13 +33,14 @@ let createNewTask = function(taskString) {
 
 let addTask = function() {
 	console.log("adding Task...");
-	let newTask = createNewTaskElement(newTask.value);
+	let currentItem = createNewTaskElement(newTask.value);
+
 	if (newTask.value == "") {
 		return;
 	}
 
-	incompleteTasks.appendChild(newTask);
-	bindTaskEvents(newTask, taskCompleted);
+	incompleteTasks.appendChild(currentItem);
+	bindTaskEvents(currentItem, taskCompleted);
 	//reset
 	newTask.value = "";
 }
