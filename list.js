@@ -50,16 +50,16 @@ let editTask = function() {
 
 	let currentItem = this.parentNode;
 
-	let editInput = listItem.querySelector("input[type=text]");
-	let nameHolder = listItem.querySelector("nameholder");
-	let edittingClass = listItem.classList.contains("editMode");
+	let editInput = currentItem.querySelector("input[type=text]");
+	let nameHolder = currentItem.querySelector("nameholder");
+	let edittingClass = currentItem.classList.contains("editMode");
 
 	if (edittingClass) {
 		nameholder.innerText = editInput.value;
 	} else {
 		editInput.value = nameHolder.innerText;
 	}
-	listItem.classlsit.toggle("editMode");
+	currentItem.classlsit.toggle("editMode");
 }
 
 let deleteTask = function() {
@@ -103,9 +103,10 @@ let bindTaskEvents = function(taskListItem, checkBoxEventHandler) {
 	checkBox.onchange = checkBoxEventHandler;
 }
 
-for (let listitem of incompleteTasks) {
-	bindTaskEvents(listitem, taskCompleted);
-}
-for (let listitem of completedTasks) {
-	bindTaskEvents(listitem, taskIncomplete);
-}
+for (let i = 0; i < incompleteTasks.children.length; i++) { 
+    bindTaskEvents(incompleteTasks.children[i], taskCompleted); 
+} 
+   
+for (let i = 0; i < completedTasks.children.length; i++) { 
+    bindTaskEvents(completedTasks.children[i], taskIncomplete); 
+} 
