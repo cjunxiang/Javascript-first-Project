@@ -62,7 +62,7 @@ let editTask = function() {
 	} else {
 		editInput.value = label.innerText;
 	}
-	currentItem.classlsit.toggle("editMode");
+	currentItem.classList.toggle("editMode");
 }
 
 let deleteTask = function() {
