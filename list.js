@@ -60,6 +60,12 @@ let taskCompleted = function() {
 	//just strike it off
 }
 
+let taskIncomplete = function() {
+	console.log("Incomplete Tasks...");
+	let currentItem = this.parentNode;
+	incompleteTasks.append(currentItem);
+	bindTaskEvents(currentItem, taskCompleted);
+}
 
 buttonPressed.onclick = addTask;
 //The addEventListener() method attaches an event handler to the specified element.
